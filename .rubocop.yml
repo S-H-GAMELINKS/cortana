@@ -1,8 +1,41 @@
 AllCops:
   TargetRubyVersion: 3.2
+  NewCops: enable
+  SuggestExtensions: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
+
+Style/Documentation:
+  Enabled: false
+
+Style/DocumentDynamicEvalDefinition:
+  Enabled: false
+
+Style/OneClassPerFile:
+  Exclude:
+    - "test/**/*"
+
+Lint/EmptyBlock:
+  Exclude:
+    - "test/**/*"
+
+Metrics/ClassLength:
+  Exclude:
+    - "test/**/*"
+
+Metrics/MethodLength:
+  Exclude:
+    - "test/**/*"
+    - "lib/cortana/cli.rb"
+    - "lib/cortana/provider/base.rb" # TODO: post_stream is inherently long due to SSE streaming logic
+    - "lib/cortana/provider/ollama.rb" # TODO: post_ndjson_stream is inherently long due to NDJSON streaming logic
+
+Metrics/AbcSize:
+  Exclude:
+    - "test/**/*"
+    - "lib/cortana/provider/base.rb"
+    - "lib/cortana/provider/ollama.rb"
